@@ -27,16 +27,11 @@ class RandomQuotesApp {
     }
 
     getRandomQuote() {
-        const randomQuote = RandomQuote.getRandomQuote();
-        this.changeCurrentQuote(randomQuote);
+        this.changeCurrentQuote(RandomQuote.getRandomQuote());
     }
 
-    getRandomQuoteViaAPI() {
-        RandomQuote.getRandomQuoteViaAPI().then((quote) => {
-            if (quote instanceof Quote) {
-                this.changeCurrentQuote(quote);
-            }
-        });
+    async getRandomQuoteViaAPI() {
+        this.changeCurrentQuote(await RandomQuote.getRandomQuoteViaAPI());
     }
 
     init() {
